@@ -1,4 +1,4 @@
-namespace ClimateApi;
+namespace ClimateApi.Model;
 
 public record Snapshot
 {

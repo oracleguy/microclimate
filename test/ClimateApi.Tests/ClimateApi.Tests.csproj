@@ -24,4 +24,9 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ClimateApi.Db\ClimateApi.Db.csproj" />
+    <ProjectReference Include="..\..\src\ClimateApi\ClimateApi.csproj" />
+  </ItemGroup>
+
 </Project>

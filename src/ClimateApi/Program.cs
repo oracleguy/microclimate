@@ -4,13 +4,8 @@ using ClimateApi.Db;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var influxConfig = builder.Configuration.GetSection("Influx").Get<InfluxConfig>();
-if (influxConfig == null)
-{
+var influxConfig = builder.Configuration.GetSection("Influx").Get<InfluxConfig>() ??
     throw new ConfigurationErrorsException("Influx database configuration was not found.");
-}
-
-Console.Write(influxConfig);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

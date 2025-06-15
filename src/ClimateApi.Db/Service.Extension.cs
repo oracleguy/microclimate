@@ -23,6 +23,7 @@ public static class ServiceExtension
         {
             return new InfluxDBClient(config.Url, config.Token);
         });
+        services.AddTransient<ITimeSeriesStore, InfluxStorage>();
         return services;
     }
 }
