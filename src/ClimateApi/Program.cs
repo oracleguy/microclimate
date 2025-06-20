@@ -12,6 +12,8 @@ var influxConfig = builder.Configuration.GetSection("Influx").Get<InfluxConfig>(
 builder.Services.AddOpenApi();
 builder.Services.AddClimateDatabase(builder.Configuration.GetConnectionString("ClimateContext") ?? string.Empty);
 builder.Services.AddInfluxDb(influxConfig);
+builder.Services.AddHostedService<DailyWorker>();
+builder.Services.AddTransient<IDataOverview, DataOverview>();
 
 var app = builder.Build();
 

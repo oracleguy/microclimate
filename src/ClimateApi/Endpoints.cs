@@ -1,4 +1,5 @@
 using ClimateApi.Db;
+using ClimateApi.Model;
 
 namespace ClimateApi;
 
@@ -12,17 +13,17 @@ internal static class Endpoints
 
     private static void SetupToday(this IEndpointRouteBuilder builder)
     {
-        builder.MapGet("/today", () =>
+        builder.MapGet("/today", (IDataOverview overview) =>
         {
-            return "Today";
-        });
+            return overview.GetToday();
+        }).Produces<Snapshot>();
     }
 
     private static void SetupYesterday(this IEndpointRouteBuilder builder)
     {
-        builder.MapGet("/yesterday", (ClimateContext context) =>
+        builder.MapGet("/yesterday", (IDataOverview overview) =>
         {
-            return "Yesterday";
-        });
+            return overview.GetYesterday();
+        }).Produces<Snapshot>();
     }
 }

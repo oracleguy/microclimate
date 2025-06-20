@@ -10,4 +10,14 @@ internal class InfluxStorage : ITimeSeriesStore
     {
         this.influxClient = influxClient;
     }
+
+    public double GetHighTemp(DateOnly date)
+    {
+        throw new NotImplementedException();
+    }
+
+    public double GetLowTemp(DateOnly date)
+    {
+        throw new NotImplementedException();
+    }
 }

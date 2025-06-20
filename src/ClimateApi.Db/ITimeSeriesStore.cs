@@ -5,5 +5,7 @@ namespace ClimateApi.Db;
 /// </summary>
 public interface ITimeSeriesStore
 {
-    
+    double GetHighTemp(DateOnly date);
+
+    double GetLowTemp(DateOnly date);
 }
