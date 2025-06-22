@@ -1,10 +1,18 @@
 
+using ClimateApi.Db;
+
 namespace ClimateApi;
 
 internal class DailyWorker : BackgroundService
 {
     private DateTime? lastCheck = null;
     private readonly TimeSpan checkInterval = TimeSpan.FromMinutes(1);
+    private readonly IServiceProvider serviceProvider;
+
+    public DailyWorker(IServiceProvider serviceProvider)
+    {
+        this.serviceProvider = serviceProvider;
+    }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -22,6 +30,8 @@ internal class DailyWorker : BackgroundService
 
     private async Task RunUpdate(CancellationToken cancellationToken)
     {
+        var timeSeries = serviceProvider.GetRequiredService<ITimeSeriesStore>();
+        
         await Task.Delay(1, cancellationToken);
     }
 }
