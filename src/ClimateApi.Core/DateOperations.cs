@@ -11,4 +11,14 @@ internal class DateOperations : IDateOperations
             yield return DateOnly.FromDateTime(today.AddYears(c));
         }
     }
+
+    public DateOnly Today()
+    {
+        return DateOnly.FromDateTime(DateTime.Now);
+    }
+
+    public DateOnly Yesterday()
+    {
+        return DateOnly.FromDateTime(DateTime.Now.AddDays(-1));
+    }
 }

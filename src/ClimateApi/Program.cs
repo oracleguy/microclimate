@@ -1,5 +1,6 @@
 using System.Configuration;
 using ClimateApi;
+using ClimateApi.Core;
 using ClimateApi.Db;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,7 @@ builder.Services.AddClimateDatabase(builder.Configuration.GetConnectionString("C
 builder.Services.AddInfluxDb(influxConfig);
 builder.Services.AddHostedService<DailyWorker>();
 builder.Services.AddTransient<IDataOverview, DataOverview>();
+builder.Services.AddClimateCore();
 
 var app = builder.Build();
 
